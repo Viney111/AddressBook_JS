@@ -1,4 +1,5 @@
 
+const prompt = require("prompt-sync")();
 let firstNamePattern = new RegExp('^[A-Z]{1}[a-z]{2,}$');
 let lastNamePattern = new RegExp('^[A-Z]{1}[a-z]{2,}$');
 let addressPattern = new RegExp('^[A-Za-z0-9 /,]{4,}$');
@@ -80,4 +81,63 @@ function AddContact(firstName,lastName,address,city,state,zip,phoneNumber,Email)
 AddContact("Viney","Khaneja","657/8,VPO Kalanaur","Rohtak","Haryana",124113,"91 7206594149","vineykhaneja999@gmail.com");
 AddContact("Vishal","Juneja","623/7,VPO Kalanaur","Rohtak","Haryana",124113,"91 9914594149","vishujuneja123@gmail.com");
 AddContact("Vikky","Jakhar","589/7,VPO Ludas","Hisar","Haryana",145011,"91 9991661664","vikky123@gmail.com");
-contactsArray.forEach(contactsDetails => console.log(contactsDetails.toString()));
+
+
+//UC4 Find and Edit Existing Contact
+function FindandEditContact(){
+    try{
+        let contactNameToBeEdited = prompt("Enter the name of the Contact you want to edit: ");
+        contactsArray.forEach(contactsDetails => {
+            if (contactsDetails.firstName == contactNameToBeEdited){
+                while(true){
+                let choice = parseInt(prompt("Enter choice of the Detail you want to edit:-\n1 1: First Name \n2: Last Name \n3: Address \n4: City \n5: State \n6: Zipcode \n7: Phone Number \n8: Email Address : \n9: Go Back"));
+                switch (choice){
+                    case 1:
+                        let newFN = prompt("Enter updated first name: ");
+                        contactsDetails.firstName = newFN;
+                        break;
+                    case 2:
+                        let newLN = prompt("Enter updated last name: ");
+                        contactsDetails.lastName = newLN;
+                        break;
+                    case 3:
+                        let newAddress = prompt("Enter updated address: ");
+                        contactsDetails.address = newAddress;
+                        break;
+                    case 4:
+                        let newCity = prompt("Enter updated city: ");
+                        contactsDetails.city = newCity;
+                        break;
+                    case 5:
+                        let newState = prompt("Enter updated state: ");
+                        contactsDetails.state = newState;
+                        break;
+                    case 6:
+                        let newZip = prompt("Enter updated zip: ");
+                        contactsDetails.zip = newZip;
+                        break;
+                    case 7:
+                        let newPhoneNo = prompt("Enter updated phone number: ");
+                        contactsDetails.phoneNumber = newPhoneNo;
+                        break;
+                    case 8:
+                        let newEmail = prompt("Enter updated email: ");
+                        contactsDetails.eMail = newEmail;
+                        break;
+                    case 9:
+                        return;
+                    default:
+                        console.log("Enter valid choice");
+                        break;
+                    }
+                }
+            }
+        });
+    }
+    catch(ex){
+        console.error(ex);
+    }
+}
+FindandEditContact();
+console.log(contactsArray);
+
