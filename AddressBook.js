@@ -72,6 +72,10 @@ let contactsArray = new Array();
 function AddContact(firstName,lastName,address,city,state,zip,phoneNumber,Email){
     try{
     let contactobject = new Contact(firstName,lastName,address,city,state,zip,phoneNumber,Email);
+    if (contactsArray.some((contacts) => contacts.firstName == firstName)) {
+        console.log("Person already exists");
+        return;
+    }
     contactsArray.push(contactobject);
     }
     catch (ex){
@@ -157,3 +161,7 @@ function DeletingContact(){
 //UC6 Finding Number of Contacts 
 let noOfContacts = contactsArray.reduce((contactsDetails) => contactsDetails + 1,0);
 console.log("Number of Contacts = "+noOfContacts);
+
+//UC7 Preventing Duplicate Entries
+AddContact("Vikky","Jakhar","589/7,VPO Ludas","Hisar","Haryana",145011,"91 9991661664","vikky123@gmail.com");
+console.log(contactsArray);
