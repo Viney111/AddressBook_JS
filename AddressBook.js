@@ -84,7 +84,7 @@ function AddContact(firstName,lastName,address,city,state,zip,phoneNumber,Email)
 }
 AddContact("Viney","Khaneja","657/8,VPO Kalanaur","Rohtak","Haryana",124113,"91 7206594149","vineykhaneja999@gmail.com");
 AddContact("Vishal","Juneja","623/7,VPO Kalanaur","Rohtak","Haryana",124113,"91 9914594149","vishujuneja123@gmail.com");
-AddContact("Vikky","Jakhar","589/7,VPO Ludas","Hisar","Haryana",145011,"91 9991661664","vikky123@gmail.com");
+AddContact("Vikky","Jakhar","589/7,VPO Ludas","Hisar","Rajasthan",145011,"91 9991661664","vikky123@gmail.com");
 
 
 //UC4 Find and Edit Existing Contact
@@ -163,5 +163,13 @@ let noOfContacts = contactsArray.reduce((contactsDetails) => contactsDetails + 1
 console.log("Number of Contacts = "+noOfContacts);
 
 //UC7 Preventing Duplicate Entries
-AddContact("Vikky","Jakhar","589/7,VPO Ludas","Hisar","Haryana",145011,"91 9991661664","vikky123@gmail.com");
+AddContact("Vikky","Jakhar","589/7,VPO Ludas","Hisar","Up",145011,"91 9991661664","vikky123@gmail.com");
 console.log(contactsArray);
+
+//UC8 Seach Person by City or State
+function searchPersonByStateorCity(){
+    let cityorStateName = prompt("Enter City or State Name: ");
+    let contactCityStateArray = contactsArray.filter((contacts) => contacts.state == cityorStateName || contacts.city == cityorStateName);
+    console.log(contactCityStateArray);
+}
+searchPersonByStateorCity();
