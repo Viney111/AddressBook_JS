@@ -20,6 +20,7 @@ class Contact{
         this.phoneNumber = params[6];
         this.eMail = params[7];
     }
+    //UC2 Validating Person Details.
     get firstName() {return this._firstName};
     set firstName(firstName){
         if (firstNamePattern.test(firstName)) this._firstName = firstName;
@@ -65,11 +66,18 @@ class Contact{
             return ("FullName: "+this.firstName+this.lastName+"|Full Address: "+this.address+","+this.city+","+this.state+","+this.zip+"|Phone: "+this.phoneNumber+ "|EMail: "+this.eMail);
         }
 }
-
-try{
-    let contactObj = new Contact("Viney","Khaneja","657/8,VPO Kalanaur","Rohtak","Haryana",124113,"91 7206594149","vineykhaneja999@gmail.com");
-    console.log(contactObj.toString());
+//UC3 Ability to add Contacts into Array
+let contactsArray = new Array();
+function AddContact(firstName,lastName,address,city,state,zip,phoneNumber,Email){
+    try{
+    let contactobject = new Contact(firstName,lastName,address,city,state,zip,phoneNumber,Email);
+    contactsArray.push(contactobject);
+    }
+    catch (ex){
+        console.error(ex);
+    }
 }
-catch (ex){
-    console.error(ex);
-}
+AddContact("Viney","Khaneja","657/8,VPO Kalanaur","Rohtak","Haryana",124113,"91 7206594149","vineykhaneja999@gmail.com");
+AddContact("Vishal","Juneja","623/7,VPO Kalanaur","Rohtak","Haryana",124113,"91 9914594149","vishujuneja123@gmail.com");
+AddContact("Vikky","Jakhar","589/7,VPO Ludas","Hisar","Haryana",145011,"91 9991661664","vikky123@gmail.com");
+contactsArray.forEach(contactsDetails => console.log(contactsDetails.toString()));
